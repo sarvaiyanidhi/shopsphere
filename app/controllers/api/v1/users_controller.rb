@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, only: %i[show update]
+  before_action :set_user, only: %i[show update destroy]
 
   def create
     @user = User.new(user_params)
@@ -21,6 +21,11 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     render json: @user
+  end
+
+  def destroy
+    @user.destroy
+    head 204
   end
 
   private
