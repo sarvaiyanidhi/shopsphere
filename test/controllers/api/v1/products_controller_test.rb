@@ -24,6 +24,22 @@ class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
+  test "Should update product" do
+    patch api_v1_product_url(@product),
+          params: { product: { title: @product.title } },
+          headers: { Authorization: JsonWebToken.encode(user_id: @product.user_id)},
+          as: :json
+    assert_response :success
+  end
+
+  test "Should forbid update product" do
+    patch api_v1_product_url(@product),
+          params: { product: { title: @product.title }},
+          headers: { Authorization: JsonWebToken.encode(user_id: users(:two).id )},
+          as: :json
+    assert_response :forbidden
+  end
+
   test "Should show products" do
     get api_v1_products_url, as: :json
     assert_response :success
