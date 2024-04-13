@@ -50,3 +50,5 @@ end
 
 
 
+
+gem "fast_jsonapi", "~> 1.5"
