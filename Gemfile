@@ -37,6 +37,8 @@ gem "bootsnap", require: false
 
 gem "jwt", "~> 2.8"
 
+gem "fast_jsonapi", "~> 1.5"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -47,6 +49,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
-
-
